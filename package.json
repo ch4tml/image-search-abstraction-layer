@@ -1,0 +1,22 @@
+{
+  "name": "image-search-abstraction-layer",
+  "version": "0.0.1",
+  "description": "FCC Project - Image Search Abstraction Layer",
+  "main": "app.js",
+  "repository": "",
+  "author": "Tom, ch4tml",
+  "dependencies": {
+    "async": "~0.2.8",
+    "body-parser": "^1.14.2",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.4.1",
+    "express": "~3.2.4",
+    "mongodb": "^2.1.4",
+    "mongoose": "^4.3.7",
+    "socket.io": "~0.9.14"
+  },
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.14.4"
+  }
+}
