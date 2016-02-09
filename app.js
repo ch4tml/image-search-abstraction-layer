@@ -34,6 +34,7 @@ if ('development' == app.get('env')) {
 
 app.get("/", routes.index); // Home route
 app.get("/api/imagesearch/:searchString(*)/\?*", routes.results);
+//app.get("/api/latest/imagesearch", routes.history);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
