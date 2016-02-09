@@ -18,13 +18,21 @@ exports.output = function(req, res){
     });
 };
 
-exports.json = function(req, res){
+exports.x = (req, res) => {
+  //var re = new RegExp(/.\?\b/, gi);
+  console.log(req.params);
+  console.log(req.params.searchString);
+  console.log(req.query.offset);
+  //if(req.params.searchString)
+};
+
+exports.results = function(req, res){
   var search = new Search(process.env.ACCOUNT_KEY, 5);
   
-  search.images('lolcats',
+  search.images(req.params.searchString,
     { top: 10,
     // Rudimentary pagination
-      skip: 10
+      skip: req.query.offset
     },
     function(err, results) {
       var arr = [];
