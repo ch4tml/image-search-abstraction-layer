@@ -1,7 +1,8 @@
 "use strict";
 
 var request = require("request");
-var https = require("https");
+var Search = require("bing.search");
+var util = require('util');
 
 /* GET home page */
 exports.index = function(req, res){
@@ -17,75 +18,27 @@ exports.output = function(req, res){
     });
 };
 
-exports.json = function(request, response){
-    //response.setHeader("Authorization", "Client-ID " + process.env.IMGUR_CLIENT_ID);
-    var options = {
-        hostname: "https://api.imgur.com/3/gallery/search/time/1/?q=lolcats",
-        headers: {
-            "Authorization" : "Client-ID " + process.env.IMGUR_CLIENT_ID
-        }
-    };
-    console.log(options.headers.Authorization);
-    console.log(options.hostname);
-    //https.get("https://api.imgur.com/3/gallery/hot/viral/0.json", (res) => {
-    https.get(options, (res) => {
-      response.setHeader("Authorization", "Client-ID " + process.env.IMGUR_CLIENT_ID);
-      res.on("data", (d) => {
-        process.stdout.write(d);
-        response.end(d);
-      });
-    }).on("error", (e) => {
-        console.log(e);
-    });
-    
-    // HTTPS REQUEST
-    /*    
-    var options = {
-        hostname: "https://api.imgur.com/3/gallery/hot/viral/0.json",
-        //port: 8080,
-        path: '/',
-        auth:{
-            "Authorization" : "Client-ID " + process.env.IMGUR_CLIENT_ID
-        },
-        method: 'GET'
-    };
-    
-    var req = https.request(options, (res) => {
-      console.log('statusCode: ', res.statusCode);
-      console.log('headers: ', res.headers);
-    
-      res.on('data', (d) => {
-        process.stdout.write(d);
-      });
-    });
-    req.end();
-    
-    req.on('error', (e) => {
-      console.error(e);
-    });*/
-    /*
-    var options = {
-        method: "GET",
-        port: 443,
-        path: "/",
-        hostname: "api.imgur.com/3/gallery/hot/viral/0.json",
-        headers:{
-            "Content-Type" : "application/json",
-            "Authorization" : "Client-ID " + process.env.IMGUR_CLIENT_ID
-        }
-    };
-    
-    var req = https.request(options, (res) => {
-      console.log('statusCode: ', res.statusCode);
-      console.log('headers: ', res.headers);
-    
-      res.on('data', (d) => {
-        console.log(d);
-      });
-    });
-      req.end();
-    
-    req.on('error', (e) => {
-      console.error(e);
-    });*/
+exports.json = function(req, res){
+  var search = new Search(process.env.ACCOUNT_KEY);
+  
+  search.images('lolcats',
+    {top: 5},
+    function(err, results) {
+      var arr = [];
+      if(err) throw err;
+      else{
+        results.forEach(function(item) {
+          var tempObj = {};
+          tempObj.url = item.url;
+          tempObj.title = item.title;
+          tempObj.thumbnail = item.thumbnail.url;
+          tempObj.context = item.sourceUrl;
+          arr.push(tempObj);
+        });
+        // Inspect results in console
+        console.log(util.inspect(results, {colors: true, depth: null}));
+        res.end(JSON.stringify(arr));
+      }
+    }
+  );
 };
