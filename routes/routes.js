@@ -19,10 +19,13 @@ exports.output = function(req, res){
 };
 
 exports.json = function(req, res){
-  var search = new Search(process.env.ACCOUNT_KEY);
+  var search = new Search(process.env.ACCOUNT_KEY, 5);
   
   search.images('lolcats',
-    {top: 5},
+    { top: 10,
+    // Rudimentary pagination
+      skip: 10
+    },
     function(err, results) {
       var arr = [];
       if(err) throw err;
@@ -36,7 +39,7 @@ exports.json = function(req, res){
           arr.push(tempObj);
         });
         // Inspect results in console
-        console.log(util.inspect(results, {colors: true, depth: null}));
+        //console.log(util.inspect(results, {colors: true, depth: null}));
         res.end(JSON.stringify(arr));
       }
     }
