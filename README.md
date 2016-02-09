@@ -4,7 +4,7 @@ Built as part of Free Code Camp's curriculum. API Challenge series - [Image Sear
 
 Based on the example service [provided] (https://cryptic-ridge-9197.herokuapp.com/).
 
-### Heroku deployment: [Image Search Abstraction Layer] (https://ch4tml-is-al.herokuapp.com/)
+### Heroku deployment: [Image Search Abstraction Layer] (https://ch4tml-imgsrch.herokuapp.com/)
 
 ## Author 
 

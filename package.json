@@ -6,6 +6,7 @@
   "repository": "",
   "author": "Tom, ch4tml",
   "dependencies": {
+    "angular": "^1.5.0",
     "async": "~0.2.8",
     "body-parser": "^1.14.2",
     "dotenv": "^2.0.0",
@@ -13,6 +14,7 @@
     "express": "~3.2.4",
     "mongodb": "^2.1.4",
     "mongoose": "^4.3.7",
+    "request": "^2.69.0",
     "socket.io": "~0.9.14"
   },
   "engines": {

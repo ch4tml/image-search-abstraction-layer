@@ -33,6 +33,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get("/", routes.index); // Home route
+app.get("/json", routes.json);
+app.get("/api/imagesearch/:searchString?offset=?");
+app.get("/output", routes.output);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
