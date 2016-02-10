@@ -1,13 +1,13 @@
 // load the things we need
 var mongoose = require('mongoose');
 
-var prevSearch = mongoose.Schema({
+var currentSearch = mongoose.Schema({
     term             : String,
     when             : String
 });
 
 // on every save, add the date
-prevSearch.pre('save', function(next) {
+currentSearch.pre('save', function(next) {
   // get the current date
   var currentDate = new Date();
 
@@ -19,4 +19,4 @@ prevSearch.pre('save', function(next) {
 });
 
 // create the model for users and expose it to our app
-module.exports = mongoose.model('PrevSearch', prevSearch);
+module.exports = mongoose.model('CurrentSearch', currentSearch);
