@@ -56,3 +56,17 @@ exports.results = function(req, res){
     }
   );
 };
+
+exports.history = (req, res) => {
+    currentSearch.find({},
+    {_id: 0, __v: 0}) //  Removes _id and __v properties from json response
+    .sort({when: -1}) // Sorts by searched for date
+    .exec(function(err, docs){ // Executes callback
+      if(err) {
+        console.log("Unable to find documents");
+        throw err;
+      }
+      else
+        res.end(JSON.stringify(docs));
+    });
+};
