@@ -11,7 +11,15 @@ var http = require("http");
 // Database setup
 var mongo = require("mongodb").MongoClient;
 var mongoose = require("mongoose");
-var configDB = process.env.MONGOLAB_URI;
+var configDB = process.env.MONGOLAB_URI || "mongodb://localhost:27017/";
+mongoose.createConnection(configDB, (err) => {
+  if(err){
+    console.log("Error connnecting to DB");
+    throw err;
+  }
+  else
+    console.log("Successfully connected to DB");
+});
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
