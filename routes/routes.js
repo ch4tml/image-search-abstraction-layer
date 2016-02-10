@@ -12,29 +12,17 @@ exports.index = function(req, res){
     });
 };
 
-exports.output = function(req, res){
-    res.render("output",{
-        title: "Experiment page"
-    });
-};
-// To test what req.params and req.query returned
-/*exports.x = (req, res) => {
-  //var re = new RegExp(/.\?\b/, gi);
-  console.log(req.params);
-  console.log(req.params.searchString);
-  console.log(req.query.offset);
-};*/
-
 exports.results = function(req, res){
   if(req.query.offset === undefined){
-    res.end(JSON.stringify({"Error": "To view other pages, please use ?offset=<Number>"}))
+    res.end(JSON.stringify({"Error": "To view other pages, please use ?offset=<Number>"}));
   }
   else{
     var search = new Search(process.env.ACCOUNT_KEY, 5);
     search.images(req.params.searchString,
       { top: 10,
-      // Rudimentary pagination
-        skip: req.query.offset || 0
+      // Pagination - skips a certain number of entries
+      // Multiplied by ten as search returns top ten results
+        skip: isNaN(req.query.offset) || req.query.offset === null ? 0 : req.query.offset*10
       },
       function(err, results) {
         var arr = [];
