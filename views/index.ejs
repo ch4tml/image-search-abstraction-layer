@@ -24,18 +24,49 @@
             </ul>
         </div><!-- Jumobtron -->
         <div>
-            <h2>Examples</h2>
+            <h2>Search Examples</h2>
+            <h3>No pagination</h3>
             <p>
-                Input: <br>
-                Ouput: <code></code>
+                Input: https://ch4tml-imgsrch.herokuapp.com/api/imagesearch/lolcats<br>
+                Ouput: <code>[
+                  {
+                    "url": "http:\/\/funnypicture.org\/wallpaper\/2015\/06\/lolcats-6-background.jpg",
+                    "title": "Lolcats 22 Wide Wallpaper - Funnypicture.org",
+                    "thumbnail": "http:\/\/ts1.mm.bing.net\/th?id=OIP.M12e2de6820299eabfbcd552d7eeb7ea2o0&pid=15.1",
+                    "context": "http:\/\/funnypicture.org\/lolcats-22-wide-wallpaper.html"
+                  },
+                  {
+                    "url": "http:\/\/3.bp.blogspot.com\/-dZNLWrpHVdQ\/UG4PoBq4NLI\/AAAAAAAAA_c\/6Yt4S1CgiiQ\/s1600\/LOLCATS2.jpg",
+                    "title": "Rosey675's Weirdly Awesome Panfu Blog: LOLcats",
+                    "thumbnail": "http:\/\/ts2.mm.bing.net\/th?id=OIP.Mfd5277f94e51db29d51cf91014d333ccH0&pid=15.1",
+                    "context": "http:\/\/rosey675.blogspot.com\/2012\/10\/lolcats.html"
+                  }]</code>
             </p>
+            <h3>With pagination</h3>
             <p>
-                Input: <br>
-                Ouput: <code></code>
+                Input: https://ch4tml-imgsrch.herokuapp.com/api/imagesearch/lolcats?offset=10<br>
+                Ouput: <code>[
+                  {
+                    "url": "http:\/\/www.innocentenglish.com\/cute-pictures\/wp\/wp-content\/uploads\/2008\/04\/best-lolcats-eated-it.jpg",
+                    "title": "... Kittens, Baby Animals \u00c2\u00bb Funny Lolcats: Saturday\u00e2\u20ac\u2122s Caturday lolcats",
+                    "thumbnail": "http:\/\/ts3.mm.bing.net\/th?id=OIP.Mfa2944611df56a738bdd3332616ccd76o0&pid=15.1",
+                    "context": "http:\/\/www.innocentenglish.com\/cute-pictures\/lolcats\/funny-lolcats-saturdays-caturday-lolcats.html"
+                  },
+                  {
+                    "url": "http:\/\/ghost19.files.wordpress.com\/2009\/12\/fail1.jpg",
+                    "title": "This Ghost19 offical FAIL BLOG\u00e2\u20ac\u00a6.. Enjoy :-) | Ghost19's Blog",
+                    "thumbnail": "http:\/\/ts2.mm.bing.net\/th?id=OIP.Mdddbb8aeab845e3369570f3ad389fbd8H0&pid=15.1",
+                    "context": "http:\/\/ghost19.wordpress.com\/this-ghost19-offical-fail-blog-enjoy\/"
+                  }]</code>
             </p>
-        </div>
+            <h2>History</h2>
+            <p>Navigating to https://ch4tml-imgsrch.herokuapp.com/api/latest/imagesearch shows the most recent search history</p>
+            <p>
+                Input: https://ch4tml-imgsrch.herokuapp.com/api/latest/imagesearch<br>
+                Ouput: <code>[{"when":"Wed Feb 10 2016 13:24:49 GMT+0000 (UTC)","term":"lolcats"},{"when":"Wed Feb 10 2016 13:24:47 GMT+0000 (UTC)","term":"lolcats"},{"when":"Wed Feb 10 2016 13:24:42 GMT+0000 (UTC)","term":"lolcats"},{"when":"Wed Feb 10 2016 13:24:38 GMT+0000 (UTC)","term":"lolcats"},{"when":"Wed Feb 10 2016 13:24:30 GMT+0000 (UTC)","term":"lolcats"},{"when":"Wed Feb 10 2016 13:24:26 GMT+0000 (UTC)","term":"lolcats"},{"when":"Wed Feb 10 2016 13:24:20 GMT+0000 (UTC)","term":"lolcats"}]</code>
+            </p>
+        </div><!-- Examples -->
     </div>
-    <script src="/javascripts/angular.min.js"></script>
   </body>
   <footer>
       Created by <a href="http://www.freecodecamp.com/ch4tml" target="_blank"><%= author %></a> as part of the <a href="http://www.freecodecamp.com/" target="_blank">Free Code Camp</a> curriculum.
